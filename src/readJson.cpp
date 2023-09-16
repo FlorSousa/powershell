@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include "json/json.hpp"
-#include "readJson.hpp"
+#include "headers/readJson.hpp"
 
 using json = nlohmann::json;
 
