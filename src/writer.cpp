@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-#include "writer.h"
+#include "headers/writer.h"
 
 int writeBytes(std::string filename, std::vector<unsigned char> topStack, std::vector<unsigned char> bodyStack){
     std::ofstream objectFile(filename, std::ios::binary);
