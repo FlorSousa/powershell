@@ -18,12 +18,12 @@ int writeBytes(std::string filename, std::vector<unsigned char> topStack, std::v
     objectFile.write(reinterpret_cast<const char*>(binaryOut.data()), binaryOut.size());
 
     if (!objectFile) {
-        std::cerr << "Erro ao escrever dados binários no arquivo." << std::endl;
+        std::cerr << "Erro ao escrever o arquivo objeto! - writer.cpp, 21" << std::endl;
         return 1;
     }
 
     objectFile.close();
     
-    std::cout << "Fim!";
+    std::cout << "Arquivo objeto foi criado";
     return 0;
 }
