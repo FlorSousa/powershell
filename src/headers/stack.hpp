@@ -1,7 +1,6 @@
 // stack.hpp
 
-#ifndef STACK_HPP
-#define STACK_HPP
+#pragma once
 #include <queue>
 
 class Stack {
@@ -23,5 +22,3 @@ public:
     Stack();
     Stack(std::queue<unsigned char> topStack, std::queue<unsigned char> bodyStack);
 };
-
-#endif
