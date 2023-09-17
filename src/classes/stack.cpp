@@ -35,6 +35,21 @@ void Stack::pushToBody(unsigned char byte) {
     this->bodyStack.push(byte);
 }
 
+void Stack::pushToTop(std::queue<unsigned char> bytes){
+    while (!bytes.empty()){
+        this->topStack.push(bytes.front());
+        bytes.pop();
+    }
+    
+}
+
+void Stack::pushToBody(std::queue<unsigned char> bytes){
+    while (!bytes.empty()){
+        this->bodyStack.push(bytes.front());
+        bytes.pop();
+    }
+}
+
 std::queue<unsigned char> Stack::getBodyStack() {
     return this->bodyStack;
 }

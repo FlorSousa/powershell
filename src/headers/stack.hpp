@@ -17,7 +17,8 @@ public:
     //push
     void pushToTop(unsigned char);
     void pushToBody(unsigned char);
-
+    void pushToTop(std::queue<unsigned char> bytes);
+    void pushToBody(std::queue<unsigned char> bytes);
     //construtores
     Stack();
     Stack(std::queue<unsigned char> topStack, std::queue<unsigned char> bodyStack);
