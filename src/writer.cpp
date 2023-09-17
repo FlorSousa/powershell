@@ -1,7 +1,7 @@
 #include <iostream>
 #include <queue>
 #include <fstream>
-#include "headers/writer.h"
+#include "./headers/writer.h"
 
 int writeBytes(std::string filename, std::queue<unsigned char> fullStack){
     std::ofstream objectFile(filename, std::ios::binary);
