@@ -11,7 +11,7 @@ int main(int argc, char **argv) {
     try {
         json root = read_json(fileName);
     } catch (const std::exception &e) {
-        std::cerr << "Erro: " << e.what() << std::endl;
+        std::cerr << "Erro: " << e.what() << "\nVerifique o caminho até o json!\n";
         return 1;
     }
 

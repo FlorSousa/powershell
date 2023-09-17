@@ -1,15 +1,16 @@
 CC = g++
 CFLAGS = -Wall -Ilibs
 
+OBJ = obj/main.o obj/writer.o obj/readJson.o obj/stack.o
 TARGET = powershell
 
 all: $(TARGET)
 
-debug: obj/main.o obj/readJson.o
-	$(CC) obj/main.o obj/readJson.o -o $(TARGET) -g $(CFLAGS)
+debug: $(OBJ)
+	$(CC) obj/main.o obj/writer.o obj/readJson.o obj/stack.o -o $(TARGET) -g $(CFLAGS)
 
-$(TARGET): obj/main.o obj/writer.o obj/readJson.o obj/stack.o
-	$(CC) obj/main.o obj/writer.o obj/readJson.o obj/stack.o -o $(TARGET) $(CFLAGS)
+$(TARGET): $(OBJ)
+	$(CC) $(OBJ) -o $(TARGET) $(CFLAGS)
   
 obj/main.o: src/main.cpp
 	$(CC) $(CFLAGS) -c -o obj/main.o src/main.cpp
