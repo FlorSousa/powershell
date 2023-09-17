@@ -1,0 +1,26 @@
+// stack.hpp
+
+#ifndef STACK_HPP
+#define STACK_HPP
+#include <queue>
+
+class Stack {
+public:
+    std::queue<unsigned char> topStack;
+    std::queue<unsigned char> bodyStack;
+
+    //get
+    std::queue<unsigned char> getTopStack();
+    std::queue<unsigned char> getFullStack();
+    std::queue<unsigned char> getBodyStack();
+
+    //push
+    void pushToTop(unsigned char);
+    void pushToBody(unsigned char);
+
+    //construtores
+    Stack();
+    Stack(std::queue<unsigned char> topStack, std::queue<unsigned char> bodyStack);
+};
+
+#endif

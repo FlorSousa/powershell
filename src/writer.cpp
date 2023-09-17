@@ -1,21 +1,20 @@
 #include <iostream>
+#include <queue>
 #include <fstream>
-#include <vector>
 #include "headers/writer.h"
 
-int writeBytes(std::string filename, std::vector<unsigned char> topStack, std::vector<unsigned char> bodyStack){
+int writeBytes(std::string filename, std::queue<unsigned char> fullStack){
     std::ofstream objectFile(filename, std::ios::binary);
-
     if (!objectFile.is_open()) {
         std::cerr << "Não foi possível abrir o arquivo! - writer.cpp, 10 \n";
         return 1;
     }
 
-    std::vector<unsigned char> binaryOut;
-    binaryOut.insert(binaryOut.end(), topStack.begin(), topStack.end());
-    binaryOut.insert(binaryOut.end(), bodyStack.begin(), bodyStack.end());
-    
-    objectFile.write(reinterpret_cast<const char*>(binaryOut.data()), binaryOut.size());
+    while (!fullStack.empty()) {
+        char frontChar = fullStack.front();
+        objectFile.write(&frontChar, sizeof(char));
+        fullStack.pop();
+    }
 
     if (!objectFile) {
         std::cerr << "Erro ao escrever o arquivo objeto! - writer.cpp, 21" << std::endl;
@@ -23,7 +22,6 @@ int writeBytes(std::string filename, std::vector<unsigned char> topStack, std::v
     }
 
     objectFile.close();
-    
     std::cout << "Arquivo objeto foi criado";
     return 0;
 }
