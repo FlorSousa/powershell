@@ -5,7 +5,6 @@
 
 using json = nlohmann::json;
 
-
 /*
 Retorna a "expression" da AST.
 */
