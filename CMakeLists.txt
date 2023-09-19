@@ -14,8 +14,8 @@ if(G++)
     add_compile_option(-Wall -Wexta -Wpedantic) 
 endif()
 
-include_directories(${CMAKE_SOURCE_DIR}/libs)
-set(SOURCE_FILES src/readJson.cpp src/writer.cpp)
+include_directories(${CMAKE_SOURCE_DIR}/libs ${CMAKE_SOURCE_DIR}/includes)
+set(SOURCE_FILES src/writer.cpp src/classes/stack.cpp)
 
 add_executable(powershell src/main.cpp ${SOURCE_FILES})
 
