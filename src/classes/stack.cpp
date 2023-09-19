@@ -1,4 +1,4 @@
-#include "../headers/stack.hpp"
+#include "stack.hpp"
 
 // Construtor padrão
 Stack::Stack() {}
