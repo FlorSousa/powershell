@@ -25,49 +25,76 @@ enum BinaryOp { // operação binária
     Or,  // Or
 }; 
 
+struct Location {
+    std::size_t start;
+    std::size_t end;
+    std::string filename;
+};
 struct Error {
     std::string message;
     std::string full_text;
+    Location location;
 };
-struct Int { uint32_t value; };
-struct Str { std::string value; };
+struct Int {
+    int32_t value; 
+    Location location;
+};
+struct Str {
+    std::string value;
+    Location location;
+};
 struct Call {
     AST* callee;
     std::vector<AST*> arguments;
+    Location location;
 };
 struct Binary {
     AST* lhs;
     BinaryOp op;
     AST* rhs;
+    Location location;
 };
 struct Function {
     AST* value;
     std::vector<AST*> parameters;
+    Location location;
 };
 struct Let { 
     AST* value;
     std::string name;
     AST* next;
+    Location location;
 };
 struct If {
     AST* condition;
     AST* then;
     AST* otherwise;
+    Location location;
 };
-struct Print  { AST* value; };
-struct First  { AST* value; };
-struct Second { AST* value; };
-struct Bool   { AST* value; };
+struct Print  {
+    AST* value;
+    Location location;
+};
+struct First  {
+    AST* value;
+    Location location;
+};
+struct Second {
+    AST* value;
+    Location location;
+};
+struct Bool   { 
+    AST* value;
+    Location location;
+};
 struct Tuple {
     AST* first;
     AST* second;
+    Location location;
 };
-struct Var { AST* term; };
-
-struct Location {
-    std::size_t start;
-    std::size_t end;
-    std::string filename;
+struct Var {
+    AST* term;
+    Location location;
 };
 
 using Node = std::variant<
@@ -85,13 +112,11 @@ using Node = std::variant<
                     Bool,
                     Tuple
                     >;
-class AST {
-public:
-    Node node; 
+
+struct AST {
+    std::string name;
     Location location;
-
-    AST(Node node, Location location) : node(node), location(location) =  default;
-
-    // TODO
-    // AST(nlohmann::json json);
+    Node* head; 
 };
+
+int convertToAST(nlohmann::json json, AST* out);

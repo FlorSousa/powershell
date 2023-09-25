@@ -15,9 +15,11 @@ if(G++)
 endif()
 
 include_directories(${CMAKE_SOURCE_DIR}/libs ${CMAKE_SOURCE_DIR}/includes)
-set(SOURCE_FILES src/writer.cpp src/classes/stack.cpp)
+set(SOURCE_FILES src/writer.cpp src/classes/stack.cpp src/ast.cpp)
 
-add_executable(powershell src/main.cpp ${SOURCE_FILES})
+add_library(objlib OBJECT ${SOURCE_FILES})
+add_executable(powershell src/main.cpp)
+target_link_libraries(powershell PRIVATE objlib)
 
 # testes
 enable_testing()
